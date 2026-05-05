@@ -1,0 +1,43 @@
+name: 'Solidity Audit Action'
+description: 'Automated Solidity security checks, gas optimization analysis, and best practice enforcement'
+author: 'harunosakura030303-maker'
+
+inputs:
+  path:
+    description: 'Path to Solidity contracts directory'
+    required: false
+    default: 'contracts'
+  severity:
+    description: 'Minimum severity to report (low, medium, high, critical)'
+    required: false
+    default: 'medium'
+  gas-report:
+    description: 'Enable gas optimization report'
+    required: false
+    default: 'true'
+  fail-on-critical:
+    description: 'Fail the workflow if critical issues are found'
+    required: false
+    default: 'true'
+  telemetry:
+    description: 'Enable anonymous usage telemetry'
+    required: false
+    default: 'true'
+
+outputs:
+  issues-found:
+    description: 'Number of issues found'
+  critical-count:
+    description: 'Number of critical issues'
+  gas-savings:
+    description: 'Estimated gas savings (percentage)'
+  report-path:
+    description: 'Path to the generated report'
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
+
+branding:
+  icon: 'shield'
+  color: 'purple'
